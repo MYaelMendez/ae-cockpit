@@ -18,7 +18,11 @@ Open http://localhost:8000/ . A local server is required for JSON and GLSL fetch
 
 ## Status
 
-**Visual prototype only (v0.1.0).** Ticker actions pause their lanes and display placeholder notices. No AI models, MCP tools, payments, or agents are connected. The shader falls back to a static background if WebGL is unavailable. Reduced-motion preferences disable animation.
+**Visual prototype only (v0.2.0).** Ticker actions pause their lanes and display placeholder notices. No AI models, MCP tools, payments, or agents are connected. The shader falls back to a static background if WebGL is unavailable. Reduced-motion preferences disable animation.
+
+## Widget fleet and invocations
+
+Each 🛸 represents a composable widget, not a model or an autonomous authority. The cockpit includes Email, Search, GitHub, Drive, Orchard, and Witness widgets. Select a tile or enter `$@ae 📧$æ` / `$@ae github` in the invocation field. Widget selection is implemented; provider connections and execution are not. See `docs/invocations.md` and `protocols/widget.schema.json`.
 
 ## Repository map
 
