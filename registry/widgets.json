@@ -1,0 +1,66 @@
+{
+  "version": "0.2.0",
+  "invocation": "$@ae",
+  "aliases": [
+    "$ae",
+    "$æ",
+    "$_a_e://"
+  ],
+  "status": "prototype",
+  "widgets": [
+    {
+      "id": "email",
+      "icon": "📧",
+      "label": "Email",
+      "route": "email",
+      "capability": "mail",
+      "connection": "unbound",
+      "description": "Inbox, search, draft, review and approved send"
+    },
+    {
+      "id": "search",
+      "icon": "🔍",
+      "label": "Search",
+      "route": "search",
+      "capability": "search",
+      "connection": "unbound",
+      "description": "Find and compare information"
+    },
+    {
+      "id": "github",
+      "icon": "💾",
+      "label": "GitHub",
+      "route": "github",
+      "capability": "repository",
+      "connection": "unbound",
+      "description": "Inspect, edit and publish repositories"
+    },
+    {
+      "id": "drive",
+      "icon": "🏎️",
+      "label": "Drive",
+      "route": "drive",
+      "capability": "execution",
+      "connection": "unbound",
+      "description": "Plan and run authorized tasks"
+    },
+    {
+      "id": "orchard",
+      "icon": "🍊",
+      "label": "Orchard",
+      "route": "orchard",
+      "capability": "commerce",
+      "connection": "unbound",
+      "description": "Discover, trade and reinvest"
+    },
+    {
+      "id": "witness",
+      "icon": "🧾",
+      "label": "Witness",
+      "route": "witness",
+      "capability": "evidence",
+      "connection": "local-prototype",
+      "description": "Inspect proposed and verified action records"
+    }
+  ]
+}
