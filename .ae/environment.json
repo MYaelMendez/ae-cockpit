@@ -1,0 +1,11 @@
+{
+  "schema_version": "0.2.0",
+  "name": "$æ Cockpit",
+  "principal": "human",
+  "status": "prototype",
+  "invocation": "$@ae",
+  "widget_registry": "registry/widgets.json",
+  "authority": "explicit-human-approval",
+  "connected_providers": [],
+  "notes": "Public profile does not convey credentials or authorization."
+}
