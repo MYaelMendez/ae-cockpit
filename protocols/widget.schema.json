@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "æ Widget Contract v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "icon",
+    "label",
+    "route",
+    "capability",
+    "connection"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "icon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "route": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "capability": {
+      "type": "string"
+    },
+    "connection": {
+      "enum": [
+        "unbound",
+        "local-prototype",
+        "connected"
+      ]
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
