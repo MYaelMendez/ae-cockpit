@@ -1,0 +1,7 @@
+{
+  "name": "Default cockpit",
+  "principal": "human",
+  "theme": "gold-dark",
+  "viewport": "mobile-first",
+  "permissions": "explicit-human-approval"
+}
