@@ -1,0 +1,102 @@
+{
+  "version": "0.1.0",
+  "status": "prototype",
+  "lanes": [
+    {
+      "id": "human",
+      "label": "HUMAN://ROOT",
+      "actions": [
+        {
+          "title": "👧🏻 PRINCIPAL"
+        },
+        {
+          "title": "INTENT → ACTION"
+        },
+        {
+          "title": "AUTHORITY://HUMAN"
+        }
+      ]
+    },
+    {
+      "id": "pilots",
+      "label": "FLAG STAFF://PILOTS",
+      "actions": [
+        {
+          "title": "🛸 FRONTIER"
+        },
+        {
+          "title": "🧠 ASTRA PRO"
+        },
+        {
+          "title": "PILOT DIRECTORY"
+        },
+        {
+          "title": "HUMAN COMMAND"
+        }
+      ]
+    },
+    {
+      "id": "drive",
+      "label": "🏎️ DRIVE",
+      "actions": [
+        {
+          "title": "EXECUTE"
+        },
+        {
+          "title": "ORCHESTRATE"
+        },
+        {
+          "title": "VERIFY"
+        }
+      ]
+    },
+    {
+      "id": "harvest",
+      "label": "🍊 HARVEST",
+      "actions": [
+        {
+          "title": "DISCOVER"
+        },
+        {
+          "title": "COMMERCE"
+        },
+        {
+          "title": "REINVEST"
+        }
+      ]
+    },
+    {
+      "id": "orchards",
+      "label": "🌳 ORCHARDS",
+      "actions": [
+        {
+          "title": "CULTIVATE"
+        },
+        {
+          "title": "TRAIN"
+        },
+        {
+          "title": "GROW"
+        }
+      ]
+    },
+    {
+      "id": "system",
+      "label": "Æ://SYSTEM",
+      "actions": [
+        {
+          "title": "⌨️ MCP"
+        },
+        {
+          "title": "🔍 DISCOVER"
+        },
+        {
+          "title": "🧾 WITNESS"
+        },
+        {
+          "title": "🛸 MOLT"
+        }
+      ]
+    }
+  ]
+}
