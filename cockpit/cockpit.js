@@ -1,6 +1,13 @@
 import {renderTickers} from './tickers.js';
 import {navigate} from './navigation.js';
+import {mountWidgets} from './widgets.js';
 const root=document.querySelector('#lanes');
+try {
+ const response=await fetch('./registry/widgets.json');
+ if(!response.ok)throw Error('Widget registry unavailable');
+ const data=await response.json();
+ mountWidgets(root,data.widgets);
+} catch(e){console.error(e)}
 try {
  const response=await fetch('./registry/environments.json');
  if(!response.ok) throw Error('Registry unavailable');
