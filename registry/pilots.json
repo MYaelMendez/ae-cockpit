@@ -1,0 +1,11 @@
+{
+  "status": "conceptual",
+  "note": "Names are design roles, not proof of API access or model availability.",
+  "pilots": [
+    {
+      "name": "Astra Pro",
+      "role": "flagship reasoning pilot",
+      "connection": "not configured"
+    }
+  ]
+}
