@@ -1,0 +1,138 @@
+{
+  "schema": "zygotae.genome.v1",
+  "version": "0.3.0",
+  "name": "Org Cockpit",
+  "use_case": "Organization",
+  "principal": {
+    "id": "example-org-principal",
+    "name": "example-org-principal"
+  },
+  "widgets": [
+    {
+      "id": "email",
+      "enabled": true,
+      "capability": "mail",
+      "requests": [
+        "orchard"
+      ],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "github",
+      "enabled": true,
+      "capability": "repository",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "drive",
+      "enabled": true,
+      "capability": "execution",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "orchard",
+      "enabled": true,
+      "capability": "commerce",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "witness",
+      "enabled": true,
+      "capability": "evidence",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "widget": "github",
+      "actions": [
+        "read"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "drive",
+      "actions": [
+        "plan"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "orchard",
+      "actions": [
+        "read_activity"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "email",
+      "actions": [
+        "draft",
+        "send"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "witness",
+      "actions": [
+        "record"
+      ],
+      "approval": "none"
+    }
+  ],
+  "environment": {
+    "invocation": "$@ae",
+    "aliases": [
+      "$ae",
+      "$æ"
+    ],
+    "routing": {
+      "default": "email"
+    }
+  },
+  "witness": {
+    "directory": ".witness",
+    "approval_policy": "every-action"
+  },
+  "deployment": {
+    "template": "MYaelMendez/ae-cockpit",
+    "owner": "example-org",
+    "repo": "org-cockpit",
+    "visibility": "private",
+    "pages": true
+  },
+  "governance": {
+    "context_may_propagate": true,
+    "authority_may_propagate": false
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "digest": "c9e25783b4b2ac9f8ae6c11978114987e19df7256ee53b3d84d9a4a2cc6bf70d",
+    "attested_by": "example-org-principal",
+    "attested_at": "2026-10-18T00:00:00.000Z"
+  }
+}

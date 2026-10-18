@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ZYGOTÆ Genome v1",
+  "description": "Canonical cockpit genome. Context propagates to forks; authority does not. Enforced by validator in genome/genome.mjs.",
+  "type": "object",
+  "required": ["schema", "version", "name", "use_case", "principal", "widgets", "permissions", "environment", "witness", "deployment", "governance"],
+  "properties": {
+    "schema": { "const": "zygotae.genome.v1" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "name": { "type": "string", "minLength": 1 },
+    "use_case": { "type": "string", "minLength": 1 },
+    "principal": { "type": "object", "required": ["id"], "properties": { "id": { "type": "string" }, "name": { "type": "string" } } },
+    "widgets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "enabled", "capability"],
+        "properties": {
+          "id": { "type": "string" },
+          "enabled": { "type": "boolean" },
+          "capability": { "type": "string" },
+          "requests": { "type": "array", "items": { "type": "string" }, "description": "widget ids this widget may ask for data" },
+          "receipts": { "type": "array", "items": { "type": "string" }, "description": "receipt kinds the widget must produce" }
+        }
+      }
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["widget", "actions", "approval"],
+        "properties": {
+          "widget": { "type": "string" },
+          "actions": { "type": "array", "items": { "type": "string" } },
+          "approval": { "enum": ["none", "required"] }
+        }
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["invocation", "routing"],
+      "properties": {
+        "invocation": { "type": "string" },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "routing": { "type": "object", "required": ["default"], "properties": { "default": { "type": "string" } } }
+      }
+    },
+    "witness": {
+      "type": "object",
+      "required": ["directory", "approval_policy"],
+      "properties": {
+        "directory": { "type": "string" },
+        "approval_policy": { "enum": ["every-action", "consequential", "plan-level"] }
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "required": ["template", "owner", "repo", "visibility", "pages"],
+      "properties": {
+        "template": { "type": "string" },
+        "owner": { "type": "string" },
+        "repo": { "type": "string" },
+        "visibility": { "enum": ["public", "private"] },
+        "pages": { "type": "boolean" }
+      }
+    },
+    "governance": {
+      "type": "object",
+      "required": ["context_may_propagate", "authority_may_propagate"],
+      "properties": { "context_may_propagate": { "const": true }, "authority_may_propagate": { "const": false } }
+    },
+    "integrity": {
+      "type": "object",
+      "properties": { "algorithm": { "const": "sha256" }, "digest": { "type": "string" }, "attested_by": { "type": "string" }, "attested_at": { "type": "string" } }
+    }
+  }
+}

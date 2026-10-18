@@ -1,0 +1,101 @@
+{
+  "schema": "zygotae.genome.v1",
+  "version": "0.3.0",
+  "name": "Operator Cockpit",
+  "use_case": "Individual operator",
+  "principal": {
+    "id": "example-operator",
+    "name": "example-operator"
+  },
+  "widgets": [
+    {
+      "id": "email",
+      "enabled": true,
+      "capability": "mail",
+      "requests": [
+        "orchard"
+      ],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "orchard",
+      "enabled": true,
+      "capability": "commerce",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "witness",
+      "enabled": true,
+      "capability": "evidence",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "widget": "orchard",
+      "actions": [
+        "read_activity"
+      ],
+      "approval": "none"
+    },
+    {
+      "widget": "email",
+      "actions": [
+        "draft"
+      ],
+      "approval": "none"
+    },
+    {
+      "widget": "witness",
+      "actions": [
+        "record"
+      ],
+      "approval": "none"
+    }
+  ],
+  "environment": {
+    "invocation": "$@ae",
+    "aliases": [
+      "$ae",
+      "$æ"
+    ],
+    "routing": {
+      "default": "email"
+    }
+  },
+  "witness": {
+    "directory": ".witness",
+    "approval_policy": "consequential"
+  },
+  "deployment": {
+    "template": "MYaelMendez/ae-cockpit",
+    "owner": "example-operator",
+    "repo": "operator-cockpit",
+    "visibility": "private",
+    "pages": true
+  },
+  "governance": {
+    "context_may_propagate": true,
+    "authority_may_propagate": false
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "digest": "0fdf8d6e8e492f4edb74887e0ae0ef65d77c7557fb6aee653c6ab9fd075cfb92",
+    "attested_by": "example-operator",
+    "attested_at": "2026-10-18T00:00:00.000Z"
+  }
+}

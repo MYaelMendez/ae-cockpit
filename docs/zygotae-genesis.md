@@ -67,3 +67,18 @@ The browser may collect answers and generate a local preview or exportable JSON.
 - `examples/`: sample `#startabusiness` genesis output
 
 **One cockpit. Many pilots. One human principal.**
+
+## v0.3 tooling
+
+```sh
+node tools/onboard.mjs --out genome.json --export ./out   # interactive interview (or --answers answers.json)
+node tools/validate-genome.mjs genomes/*.json             # validate genomes
+node tools/demo.mjs genomes/individual-operator.json      # plan -> approve -> execute -> witness (simulated)
+node --test tests/zygotae.test.mjs
+```
+
+- `genome/genome.schema.json` + `genome/genome.mjs`: canonical schema, validator, sha256 integrity attestation (detects tampering; not a cryptographic identity proof).
+- `genomes/`: `startabusiness`, `individual-operator`, `organization` examples.
+- `runtime/`: widget envelope, permission evaluator, orchestrator, hash-chained witness receipts (optionally written to `.witness/`).
+- `tools/export.mjs`: writes a deployable template (genome, `.ae/environment.json`, README, Pages workflow). Witness history and approvals are not copied: context propagates; authority does not.
+- Creating the GitHub repository remains a manual, authorized step; no providers are connected and state is in-memory.
