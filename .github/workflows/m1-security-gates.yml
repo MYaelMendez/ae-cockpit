@@ -1,0 +1,24 @@
+name: M1 reference governance tests
+on:
+  pull_request:
+    paths:
+      - 'packages/genome/**'
+      - 'packages/governance/**'
+      - 'tests/test_m1.py'
+      - '.github/workflows/m1-security-gates.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reference-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit and negative-path tests (no repository secrets)
+        run: python -m unittest discover -s tests -p 'test_m1.py' -v
