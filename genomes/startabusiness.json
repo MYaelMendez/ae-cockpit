@@ -1,0 +1,139 @@
+{
+  "schema": "zygotae.genome.v1",
+  "version": "0.3.0",
+  "name": "Startabusiness Cockpit",
+  "use_case": "#startabusiness",
+  "principal": {
+    "id": "example-founder",
+    "name": "example-founder"
+  },
+  "widgets": [
+    {
+      "id": "github",
+      "enabled": true,
+      "capability": "repository",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "email",
+      "enabled": true,
+      "capability": "mail",
+      "requests": [
+        "orchard"
+      ],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "orchard",
+      "enabled": true,
+      "capability": "commerce",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "search",
+      "enabled": true,
+      "capability": "search",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    },
+    {
+      "id": "witness",
+      "enabled": true,
+      "capability": "evidence",
+      "requests": [],
+      "receipts": [
+        "plan",
+        "approval",
+        "execution"
+      ]
+    }
+  ],
+  "permissions": [
+    {
+      "widget": "github",
+      "actions": [
+        "read",
+        "write"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "email",
+      "actions": [
+        "draft",
+        "send"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "orchard",
+      "actions": [
+        "read_activity"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "search",
+      "actions": [
+        "query"
+      ],
+      "approval": "required"
+    },
+    {
+      "widget": "witness",
+      "actions": [
+        "record"
+      ],
+      "approval": "none"
+    }
+  ],
+  "environment": {
+    "invocation": "$@ae",
+    "aliases": [
+      "$ae",
+      "$æ"
+    ],
+    "routing": {
+      "default": "github"
+    }
+  },
+  "witness": {
+    "directory": ".witness",
+    "approval_policy": "every-action"
+  },
+  "deployment": {
+    "template": "MYaelMendez/ae-cockpit",
+    "owner": "example-founder",
+    "repo": "startabusiness-cockpit",
+    "visibility": "public",
+    "pages": true
+  },
+  "governance": {
+    "context_may_propagate": true,
+    "authority_may_propagate": false
+  },
+  "integrity": {
+    "algorithm": "sha256",
+    "digest": "4e509dc4c21b373a0db971a2227c2b107a1dbeb8b19064d6e5d0d1762ef86f6f",
+    "attested_by": "example-founder",
+    "attested_at": "2026-10-18T00:00:00.000Z"
+  }
+}

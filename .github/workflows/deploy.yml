@@ -14,9 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Validate genomes
+        run: node tools/validate-genome.mjs genomes/*.json $( [ -f genome.json ] && echo genome.json )
+      - name: Run tests
+        run: node --test tests/zygotae.test.mjs
+      - name: Stage site (genome and witness records published alongside UI)
+        run: |
+          mkdir -p _site
+          cp -r index.html cockpit shaders registry protocols genomes docs _site/
+          [ -f genome.json ] && cp genome.json _site/ || true
+          mkdir -p _site/witness && cp -r .witness/. _site/witness/ 2>/dev/null || true
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: _site
       - id: deployment
         uses: actions/deploy-pages@v4
