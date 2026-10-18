@@ -138,3 +138,74 @@ M6: Threat model, accessibility, documentation and opt-in rollout.
 The current æ Studio plugin bridge only prepares drafts; it does not read code, execute builds, deploy, or submit to a plugin directory. This RFC is an implementation specification, not evidence that the runtime has been built.
 
 **One cockpit. Many pilots. One human principal.**
+
+## Governance Amendment A — Three-layer model and enforceable authority (proposed)
+
+This amendment is normative for M1 design, pending human review. Declarations alone do not enforce permissions.
+
+### A1. GENOME / PHENOTYPE / LINEAGE
+
+- **GENOME:** untrusted declarative input describing purpose, configuration, requested capabilities, and approval preferences. No tokens, credentials, authoritative identity assertions, or self-executing grants.
+- **PHENOTYPE:** deterministic generated files plus runtime bindings supplied separately by the authorized environment. Build manifest records compiler digest, pinned template commit, schema version, normalized genome digest, generated artifact digest and build environment. Non-deterministic metadata (timestamps, run IDs) belongs in the separate receipt, not in hashed reproducible output.
+- **LINEAGE:** independently verified evidence connecting parent revision, genome digest, candidate artifact, test run, authenticated human decision and child revision. A local JSON file or hash alone is not immutable or proof of human approval. Use protected GitHub environments/branches, trusted OIDC identities, artifact attestations or equivalent signed receipts, and access-controlled append-only audit storage. Verify signatures, identities, scopes, timestamps and referenced digests before relying on them.
+
+### A2. Five governance locks
+
+1. **Proposal is not execution:** generation of local candidate files is not permission to push, publish, deploy, or access remote systems.
+2. **Capability leases:** every delegated grant is scoped by principal, resource, action, environment, issue time, expiry, unique grant ID and revocation status. Deny by default. Check the current authoritative revocation state at execution time, not only a cached genome. For highly consequential actions, require a fresh interactive approval even if a lease exists.
+3. **Principal outside genome:** principal authentication, credential custody and grant issuance are handled by a separate trusted authority service. The genome may contain an opaque reference but cannot forge an authenticated identity or approval.
+4. **Reproducible generation:** pin dependencies and source revisions; canonicalize genome input; hash inputs and output manifest; compare two independent clean builds. A digest proves equality to a referenced artifact, not benign behavior or secure code.
+5. **Independent witness:** the proposer cannot mint valid approval or verification receipts. The trusted CI verifier evaluates the exact candidate commit and publishes a verifiable signed receipt. Never execute untrusted PR code in a privileged workflow with write tokens or secrets. A receipt should distinguish tests that passed from checks not performed.
+
+### A3. Permission levels and gates
+
+| Level | Example | Default | Gate |
+| --- | --- | --- | --- |
+| L0 Explore | local preview, validation, draft proposal | Allow within local user session | No consequential external action |
+| L1 Prepare | isolated code generation and tests | Only in authorized sandbox | Workspace policy; no ambient credentials/network by default |
+| L2 Publish proposal | remote branch push, PR, externally visible artifacts | Deny | Explicit scoped authorization, recorded per action or tightly bounded lease |
+| L3 Operate | merge, deploy, spend, sign, read sensitive data, alter permissions | Deny | Fresh human authorization, least privilege, independent enforcement and audit |
+
+Child Studios can propose changes to parent authority policy **as untrusted text only**; no child may enact, approve, or verify that policy change. Permission-policy changes require an independent authorized human review and separate protected control path. The policy engine must not trust the candidate repository's own policy file for permission to modify itself.
+
+### A4. Lease contract (conceptual, not a credential)
+
+```yaml
+grant_id: "unique-opaque-id"
+principal_ref: "external-authenticated-subject"
+subject_ref: "specific-agent-instance"
+resource: "github:owner/repo"
+actions: ["pr.create"]
+constraints:
+  branch_prefix: "feature/"
+issued_at: "2026-10-18T14:32:00Z"
+expires_at: "2026-10-18T15:32:00Z"
+revocation_check: "online-before-action"
+issuer: "trusted-authority-service"
+status: "illustrative-only"
+```
+
+The authority service issues and verifies grants; editing this YAML never creates a valid lease. Clock checks must be performed server-side with bounded skew. A lease cannot be transferred to descendants.
+
+### A5. Witness receipt verification
+
+A witness record must bind `parent_commit`, `genome_sha256`, `compiler_digest`, `template_commit`, `candidate_commit`, `test_run_id`, `checks`, `approver_subject`, `decision`, `approval_scope`, `decision_time`, `child_commit` (if created), and `signature/attestation_ref`. Never publish tokens, private interview transcripts, or personal secrets. Publish only a redacted verification summary on Pages, with links to independently verifiable evidence when disclosure is permitted. No successful-approval claim may appear before approval is actually recorded.
+
+### A6. Required negative and adversarial tests
+
+- Child-generated genome requests admin, secrets, deploy or parent write permissions -> **denied**.
+- Child modifies its own policy evaluator or `authority.yaml` -> no elevated privileges; independent policy enforcement remains authoritative.
+- Stolen, expired, revoked, wrong-principal, wrong-repo or wrong-branch lease -> **denied** at action time.
+- Prompt injection in interview, template, source comment, dependency, or tool result requests bypass -> **denied**.
+- Forged local witness JSON, altered digest, spoofed CI run or approval subject -> **verification fails**.
+- Untrusted PR attempts to read CI secrets or write to protected branch -> **blocked**.
+- Same pinned inputs built in two clean environments -> identical generated artifacts; non-deterministic receipts excluded.
+- Candidate PR changes policy, workflow permissions, dependency pins, or secrets access -> heightened review required.
+- A deployed instance loses its lease -> subsequent gated actions denied; already executed external effects are not assumed reversible.
+- Parent revocation does not silently mutate independent child principals; it invalidates only grants actually issued by that parent authority, according to explicit trust relationships.
+
+### A7. Updated milestone gate
+
+**M1 is governance-first:** incorporate this amendment; implement strict schema/validators, external authorization interface contract, lease and revocation verifier, witness verification interface, and negative tests using mocks. M1 is complete only when the isolation, forged-witness, and revocation tests pass. M2 mobile UI and M3 recursive compilation may then proceed. **Production execution** remains blocked until real credential isolation, protected CI, independently verifiable witness, revocation integration, and end-to-end tests are deployed and independently reviewed.
+
+This amendment is a proposed design, not a claim of operational production-grade security.
