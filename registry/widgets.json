@@ -9,6 +9,15 @@
   "status": "prototype",
   "widgets": [
     {
+      "id": "aeaeae",
+      "icon": "💬",
+      "label": "$æææ",
+      "route": "aeaeae",
+      "capability": "nested-conversations",
+      "connection": "local-prototype",
+      "description": "The chats within the chat. Create bounded local text tasks, approve their revisions, and rejoin results with an evidence ledger. External providers and AI models are not connected."
+    },
+    {
       "id": "email",
       "icon": "📧",
       "label": "Email",

@@ -1,0 +1,46 @@
+{
+  "schema_version": "aeaeae.proposal/0.1",
+  "mode": "illustrative-fixture",
+  "authority": "none",
+  "principal_ref": "human:example",
+  "correlation_id": "example-origin-story",
+  "conversations": [
+    {
+      "id": "root",
+      "parent_id": null,
+      "purpose": "Explore the chats within the chat",
+      "status": "PROPOSED",
+      "children": ["geometry", "risk", "evidence"]
+    },
+    {
+      "id": "geometry",
+      "parent_id": "root",
+      "purpose": "Inspect an illustrative corridor geometry",
+      "status": "PROPOSED",
+      "context_refs": [],
+      "requested_capabilities": [],
+      "limits": {"max_depth": 1, "max_children": 0},
+      "result_ref": null
+    },
+    {
+      "id": "risk",
+      "parent_id": "root",
+      "purpose": "Identify missing source evidence; do not certify travel safety",
+      "status": "PROPOSED",
+      "context_refs": [],
+      "requested_capabilities": [],
+      "limits": {"max_depth": 1, "max_children": 0},
+      "result_ref": null
+    },
+    {
+      "id": "evidence",
+      "parent_id": "root",
+      "purpose": "Describe what would count as verified evidence",
+      "status": "PROPOSED",
+      "context_refs": [],
+      "requested_capabilities": [],
+      "limits": {"max_depth": 1, "max_children": 0},
+      "result_ref": null
+    }
+  ]
+}

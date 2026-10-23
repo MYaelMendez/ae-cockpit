@@ -26,6 +26,12 @@ Each 🛸 represents a composable widget, not a model or an autonomous authority
 
 ## Repository map
 
+### 💬 $æææ · The chats within the chat
+
+Select the **💬 $æææ** widget, enter `$æææ` or `$aeaeae`, then open [the local workshop](aeaeae/workbench.html) or [the twelve-second WebGL origin story](aeaeae/index.html). The module includes the visual identity, [nested-conversation RFC](aeaeae/spec/RFC-0001-NESTED-CONVERSATIONS.md), example tree and roadmap. Direct browser invocation aliases also include `>_æææ://`, `💬`, and `💬://`; these are local application shortcuts, not registered platform commands.
+
+The [local reference primitives](aeaeae/PRIMITIVES.md) now implement bounded task trees, explicit context selection, revision-bound local confirmations, two deterministic text capabilities, cancellation, rejoining and hash-linked evidence. No LLM, remote agent, production identity, or external provider authorization is connected. Run `node --test tests/aeaeae.test.mjs tests/primitives.test.mjs` and `node aeaeae/demo.mjs`. The reference confirmation mechanism is in-process, not a security boundary against hostile page code.
+
 - `index.html`: entry surface
 - `cockpit/`: shader initialization, ticker UI, navigation, CSS
 - `shaders/`: GLSL source
@@ -49,3 +55,4 @@ In **Settings → Pages**, choose **GitHub Actions** as the deployment source. A
 ## License
 
 MIT.
+

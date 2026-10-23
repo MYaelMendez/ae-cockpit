@@ -1,0 +1,31 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "aeaeae",
+  "version": "0.1.0",
+  "description": "The chats within the chat: bounded workstreams, explicit human authority, and evidence-backed returns.",
+  "author": {"name": "Yael Mendez"},
+  "license": "MIT",
+  "repository": "https://github.com/MYaelMendez/ae-cockpit",
+  "keywords": ["conversation", "agentic-environments", "opensourceware", "human-principal"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "$æææ",
+        "shortDescription": "The chats within the chat",
+        "longDescription": "Organize a human goal into bounded conversational workstreams, carry only selected context, use available authorized tools, and return results with sources, limitations, and decisions. Many conversations. One principal. Skills-only: no bundled MCP server, model service, or autonomous child-chat runtime.",
+        "developerName": "Yael Mendez",
+        "category": "Productivity",
+        "capabilities": [],
+        "logo": "./assets/chat-aeaeae.png",
+        "composerIcon": "./assets/chat-aeaeae.png",
+        "brandColor": "#F29A38",
+        "brandColorDark": "#F29A38",
+        "defaultPrompt": [
+          "$æææ — turn my goal into bounded workstreams and begin the useful work.",
+          "💬 Show the chats within this chat: purpose, context, status, and the next decision.",
+          ">_æææ:// Rejoin our work with verified results, source references, and remaining decisions."
+        ]
+      }
+    }
+  }
+}
