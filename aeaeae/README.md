@@ -35,7 +35,9 @@ A child may receive selected context. Receiving context never grants access to t
 
 ## What is operational
 
-The local animation and its playback controls are implemented. Nested conversation execution, persistent storage, model routing, authentication, grants, delegation, receipts, and live agent tools are **not implemented** in this repository. The image and animation are not evidence of an operating runtime.
+The local animation, launcher, and [primitive workshop](workbench.html) are implemented. The [local reference runtime](PRIMITIVES.md) supports bounded nested tasks, explicit context selection, local confirmations, two deterministic text capabilities, cancellation, rejoining and hash-linked records. These are task records, not independent LLM conversations. Remote delegation, durable storage, real identity, external grants and live provider tools remain unimplemented.
+
+Run `node --test tests/aeaeae.test.mjs tests/primitives.test.mjs` or `node aeaeae/demo.mjs` from the repository root. Serve the repository locally or over HTTPS to open the workshop. Web Crypto is used where available, with a tested portable SHA-256 implementation for development HTTP origins.
 
 ## Open sourceware
 

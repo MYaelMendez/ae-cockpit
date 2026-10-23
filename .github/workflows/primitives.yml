@@ -1,0 +1,26 @@
+name: Verify local conversation primitives
+on:
+  pull_request:
+    paths:
+      - 'aeaeae/**'
+      - 'cockpit/widgets.js'
+      - 'registry/widgets.json'
+      - 'tests/**'
+      - '.github/workflows/primitives.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Verify boundaries and launcher
+        run: node --test tests/aeaeae.test.mjs tests/primitives.test.mjs
+      - name: Exercise complete local cycle
+        run: node aeaeae/demo.mjs

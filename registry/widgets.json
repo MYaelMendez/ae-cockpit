@@ -15,7 +15,7 @@
       "route": "aeaeae",
       "capability": "nested-conversations",
       "connection": "local-prototype",
-      "description": "The chats within the chat. Open the origin story and explore the proposed conversation-tree contract. Nested execution is not connected."
+      "description": "The chats within the chat. Create bounded local text tasks, approve their revisions, and rejoin results with an evidence ledger. External providers and AI models are not connected."
     },
     {
       "id": "email",

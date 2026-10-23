@@ -63,4 +63,4 @@ Include conversation and attempt IDs, correlation/causation IDs, actual status, 
 
 ## Boundary
 
-The origin loop illustrates this idea. No conversation runtime, agent orchestration, live permission service, or platform command registration is delivered by this RFC.
+The origin loop illustrates this idea. A local reference subset now lives in `../primitives.mjs`; see `../PRIMITIVES.md` for exact implemented behavior. It runs deterministic local text tasks, not independent LLM chats. No external agent orchestration, live permission service, or platform command registration is delivered by this RFC.

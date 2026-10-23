@@ -19,7 +19,7 @@ export function mountWidgets(root,items){
  const description=document.createElement('p');description.textContent=w.description||'';
  const status=document.createElement('p');status.textContent=w.connection==='connected'?'Connected capability':w.connection==='local-prototype'?'Local prototype only':'Not connected — no external action will run';
  detail.append(name,description,status);
- if(w.id==='aeaeae'){const link=document.createElement('a');link.href='./aeaeae/';link.textContent='Open 💬 $æææ · 12-second origin story';detail.append(link);}
+ if(w.id==='aeaeae'){const link=document.createElement('a');link.href='./aeaeae/workbench.html';link.textContent='Open 💬 $æææ · local workshop';detail.append(link);const story=document.createElement('a');story.href='./aeaeae/';story.textContent=' · Watch the origin story';detail.append(story);}
  grid.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.widget===w.id)));}
  for(const w of items){if(!safeId(w.id))continue;const b=document.createElement('button');b.type='button';b.className='widget';b.dataset.widget=w.id;b.textContent='🛸 '+w.icon+' '+w.label;b.addEventListener('click',()=>select(w));grid.append(b)}
  prompt.addEventListener('submit',e=>{e.preventDefault();const raw=input.value.trim();const parsed=parseInvocation(raw);const selected=parsed&&(items.find(w=>w.id===parsed.id)||items.find(w=>w.icon===parsed.icon));if(selected)select(selected);else detail.textContent='Unknown widget. Try $æææ, $@ae 📧$æ or $@ae github.'});

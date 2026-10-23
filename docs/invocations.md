@@ -9,7 +9,7 @@
 - `>_æææ://` / `💬` / `💬://` — local aliases for that prototype
 - `$@ae 💬` / `$@ae aeaeae` — select the same widget through the existing grammar
 
-Selecting 💬 shows an explicit link to `aeaeae/`. Opening it plays a local visual story; it does not start agents or nested conversations.
+Selecting 💬 shows explicit links to `aeaeae/workbench.html` and the origin story at `aeaeae/`. The workshop executes two fixed local text capabilities in bounded task records. It does not start LLM agents or external conversations.
 - `$ae` — ASCII-compatible skill identifier
 - `$æ` — display notation
 - `$_a_e://` — proposed address notation; no system-wide protocol handler is registered

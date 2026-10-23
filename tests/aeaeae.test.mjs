@@ -36,7 +36,8 @@ test('widget selection renders a local story link with accurate connection state
   globalThis.history={replaceState:(_s,_t,url)=>{hash=url;}};
   globalThis.location={hash:'#widget=aeaeae'};
   const el=new Element('main');mountWidgets(el,registry.widgets);
-  const link=el.querySelectorAll('a')[0];assert.equal(link.href,'./aeaeae/');
+  const link=el.querySelectorAll('a')[0];assert.equal(link.href,'./aeaeae/workbench.html');
+  assert.equal(el.querySelectorAll('a')[1].href,'./aeaeae/');
   assert.equal(hash,'#widget=aeaeae');
   const chat=el.querySelectorAll('button').find(b=>b.dataset.widget==='aeaeae');
   assert.equal(chat.attrs['aria-pressed'],'true');
