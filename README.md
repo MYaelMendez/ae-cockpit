@@ -26,6 +26,12 @@ Each 🛸 represents a composable widget, not a model or an autonomous authority
 
 ## Repository map
 
+### 💬 $æææ · The chats within the chat
+
+Select the **💬 $æææ** widget, enter `$æææ` or `$aeaeae`, then follow **Open 💬 $æææ** to [the twelve-second WebGL origin story](aeaeae/index.html). The prepared module includes the visual identity, [nested-conversation RFC](aeaeae/spec/RFC-0001-NESTED-CONVERSATIONS.md), example tree and roadmap. Direct browser invocation aliases also include `>_æææ://`, `💬`, and `💬://`; these are local application shortcuts, not registered platform commands.
+
+The animation and launcher are implemented; nested conversation execution, model routing, and provider authorization remain proposed. Run the focused checks with `node --test tests/aeaeae.test.mjs`. Browser/WebGL playback requires separate visual verification.
+
 - `index.html`: entry surface
 - `cockpit/`: shader initialization, ticker UI, navigation, CSS
 - `shaders/`: GLSL source
@@ -49,3 +55,4 @@ In **Settings → Pages**, choose **GitHub Actions** as the deployment source. A
 ## License
 
 MIT.
+

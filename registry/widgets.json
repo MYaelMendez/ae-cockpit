@@ -9,6 +9,15 @@
   "status": "prototype",
   "widgets": [
     {
+      "id": "aeaeae",
+      "icon": "💬",
+      "label": "$æææ",
+      "route": "aeaeae",
+      "capability": "nested-conversations",
+      "connection": "local-prototype",
+      "description": "The chats within the chat. Open the origin story and explore the proposed conversation-tree contract. Nested execution is not connected."
+    },
+    {
       "id": "email",
       "icon": "📧",
       "label": "Email",
