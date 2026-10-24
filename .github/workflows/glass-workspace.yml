@@ -1,0 +1,26 @@
+name: Verify glass workspace
+on:
+  pull_request:
+    paths:
+      - 'work/**'
+      - 'aeaeae/**'
+      - 'tests/**'
+      - 'index.html'
+      - '.github/workflows/glass-workspace.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Verify local boundaries and workspace lifecycle
+        run: node --test tests/*.test.mjs
+      - name: Exercise local primitives
+        run: node aeaeae/demo.mjs
